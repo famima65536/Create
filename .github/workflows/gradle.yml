@@ -8,6 +8,7 @@ on:
     branches: [ mc1.19/dev ]
   pull_request:
     branches: [ mc1.19/dev ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -24,3 +25,7 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+    - uses: actions/upload-artifact@v3
+      with:
+        name: my-artifact
+        path: build
